@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vuejs</title>
+</head>
+<body>
+	<div id="elemento">
+		<!-- Hola Mundo con Vuejs-->
+		<p>{{contenido}}</p>
+
+		<!-- Para Agregar Lenguaje methods -->
+		<button type="button" @click="agregarLenguaje">Agregar Lenguaje</button>
+		<label for="nuevoLenguaje">Nombre del Lenguaje</label>
+		<input type="text" name="nuevoLenguaje" id="nuevoLenguaje" v-model="nuevoLenguaje" @keyup.enter="agregarLenguaje">
+		<label for="nuevoLink">Link del Lenguaje</label>
+		<input type="text" name="nuevoLink" id="nuevoLink" v-model="nuevoLink" @keyup.enter="agregarLenguaje">
+		<label for="nuevoPunto">Puntos del Lenguaje</label>
+		<input type="number" name="nuevoPunto" id="nuevoPunto" v-model.numer="nuevoPunto" @keyup.enter="agregarLenguaje">
+		<!-- Arreglo de Objetos-->
+		<ul>
+			<li v-for="lenguaje of lenguajes">
+				<a :href="lenguaje.link" target="_black">{{lenguaje.nombre}}</a>
+				{{lenguaje.puntos}}
+				<button type="button" @click="lenguaje.puntos++">+</button>
+				<button type="button" @click="lenguaje.puntos--">-</button>
+			</li>
+		</ul>
+		<!-- utilizacion de computed-->
+		<p>Suma de todos los puntos {{sumarTodo}}</p>
+	</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+	const cont=new Vue({
+		el:"#elemento",//elemento a utilizar
+		data:{//datos a utilizar
+			contenido:"Hola Mundo Utilizando Vuejs",
+			lenguajes:[
+				{nombre:"JavaScript",link:"https://www.javascript.com",puntos:0},
+				{nombre:"Python",link:"https://www.python.org",puntos:0},
+				{nombre:"PHP",link:"https://www.php.net",puntos:10},
+			],
+			nuevoLenguaje:"",
+			nuevoLink:"",
+			nuevoPunto:0,
+			total:0
+		},
+		methods:{//metodos a utilizar
+			agregarLenguaje(){
+				this.lenguajes.push({
+					nombre:this.nuevoLenguaje,
+					link:this.nuevoLink,
+					puntos:this.nuevoPunto
+				});
+				this.nuevoLenguaje=""
+				this.nuevoLink=""
+			}
+		},
+		computed:{
+			sumarTodo(){
+				this.total=0;
+				for (lenguaje of this.lenguajes) {
+					this.total=this.total+lenguaje.puntos;
+				}
+				return this.total;
+			}
+		}
+	});
+</script>		
+</html>
