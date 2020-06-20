@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vuejs</title>
+</head>
+<body>
+	<div id="elemento">
+		<!-- Hola Mundo con Vuejs-->
+		<p>{{contenido}}</p>
+
+		<!-- Para Agregar Lenguaje Primer method -->
+		<button type="button" @click="agregarLenguaje">Agregar Lenguaje</button>
+		<label for="nuevoLenguaje">Nombre del Lenguaje</label>
+		<input type="text" name="nuevoLenguaje" id="nuevoLenguaje" v-model="nuevoLenguaje" @keyup.enter="agregarLenguaje">
+		<label for="nuevoLink">Link del Lenguaje</label>
+		<input type="text" name="nuevoLink" id="nuevoLink" v-model="nuevoLink" @keyup.enter="agregarLenguaje">
+		<!-- Primer Arreglo de Objetos-->
+		<ul>
+			<li v-for="lenguaje of lenguajes"><a :href="lenguaje.link" target="_black">{{lenguaje.nombre}}</a></li>
+		</ul>
+	</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+	const cont=new Vue({
+		el:"#elemento",//elemento a utilizar
+		data:{//datos a utilizar
+			contenido:"Hola Mundo Utilizando Vuejs",
+			lenguajes:[
+				{"nombre":"JavaScript","link":"https://www.javascript.com"},
+				{"nombre":"Python","link":"https://www.python.org"},
+				{"nombre":"PHP","link":"https://www.php.net"},
+			],
+			nuevoLenguaje:"",
+			nuevoLink:"",
+		},
+		methods:{//metodos a utilizar
+			agregarLenguaje(){
+				this.lenguajes.push({
+					nombre:this.nuevoLenguaje,link:this.nuevoLink
+				});
+			}
+		},
+	});
+</script>		
+</html>
