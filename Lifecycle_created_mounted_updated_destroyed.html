@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Vuejs</title>
+  </head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <body>
+    <div id="elemento">
+        <button @click="texto='hola cambiado'" class="btn btn bg-warning">Cambiar</button>
+        <button @click="destruir()" class="btn btn-danger">Destruir</button>
+        {{texto}}
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    const con=new Vue({
+      el:"#elemento",
+      data:{
+        texto:'hola'
+      },
+      methods: {
+        destruir(){
+            this.$destroy();
+        }
+      },
+      //metodos o funciones q se ejecutan antes de hacer algun tipo de accion en nuestro DOM
+      beforeCreate() {//ANTES DE CREAR LA INSTANCIA
+          console.log('beforeCreate');//MENSAJE Q SE HIZO LA ACCION
+          console.log(this.texto);
+      },
+      created() {//DESPUES DE CREAR LA INSTANCIA
+        console.log('created');//MENSAJE Q SE HIZO LA ACCION
+        console.log(this.texto);
+      },
+      beforeMount() {//ANTES DE TENER CARGADO ALGO EN EL DOM
+          console.log('beforeMount');//MENSAJE Q SE HIZO LA ACCION
+      },
+      mounted() {//DESPUES DE TENER CARGADO ALGO
+        console.log('mounted');//MENSAJE Q SE HIZO LA ACCION
+      },
+      beforeUpdate() {//ANTES DE ACTUALIZAR O CAMBIARALG
+        console.log('beforeUpdate');//MENSAJE Q SE HIZO LA ACCION
+      },
+      updated() {//DESPUES DE CAMBIAR ALGO
+        console.log('updated');//MENSAJE Q SE HIZO LA ACCION  
+      },
+      beforeDestroy() {//ANTES DE ELEIMINAR NUETRA INSTANCIA  DESTRUIRLA
+          console.log('beforeDestroy');//MENSAJE Q SE HIZO LA ACCION
+      },
+      destroyed() {//DESPUES DE DESTRUIRLA
+        console.log('destroyed');//MENSAJE Q SE HIZO LA ACCION
+      },
+    })
+  </script>
+</html>

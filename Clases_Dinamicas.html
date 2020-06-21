@@ -4,7 +4,6 @@
 	<title>Vuejs</title>
 </head>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <body>
 	<div id="elemento" class="container mt-5">
 		<div :class="['p-2' , 'text-white' , colorFondo]">
@@ -15,7 +14,8 @@
 			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 		</div>
-		<input type="text" name="" v-model="colorFondo">
+		<label for="colorFondo">Cambiar Color</label> <input type="text" name="colorFondo" id="colorFondo" v-model="colorFondo" placeholder="Ingrese un Color">
+		<hr>
 		<div class="p-2 text-white" :class="{'bg-danger':cambioColor,'bg-primary':!cambioColor}">
 			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -24,7 +24,7 @@
 			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 		</div>
-		<button type="button" class="btn btn-primary" @click="cambioColor=!cambioColor">Cambia Color</button>
+		<button type="button" class="btn btn-warning" @click="cambioColor=!cambioColor">Cambia Color</button>
 	</div>
 </body>
 
@@ -37,7 +37,6 @@
 			cambioColor:false,
 		},
 		methods:{
-
 		}
 	});	
 </script>		

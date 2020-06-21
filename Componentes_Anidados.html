@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vuejs</title>
+</head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<body>
+	<div id="elemento" class="container">
+		<padre></padre>
+	</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>	
+	//creamos nuestro componetne padre
+	Vue.component("padre",{
+		template:
+		`
+			<div class="p-5 bg-dark text-white">				
+				<h2>Papa {{numeroPadre}}</h2>
+				<button type="button" class="btn btn-danger" @click="numeroPadre++">+</button>
+				<!-- Para llamar a un componetente hijo Basta con solamente escribir si nombre, si le desea pasar variable se le coloca como atributos-->
+				<hijo :numero=numeroPadre></hijo>
+			</div>
+		`,
+		data(){//DATOS Q MANEJARA EL COMPONENTE PADRE
+			return{
+				numeroPadre:15
+			}
+		}
+	});
+	//creamos nuestros componetne hijo
+	Vue.component("hijo",{
+		template:
+		`
+			<div class="p-5 bg-success text-white">
+				Hijo
+				<h2>{{numero}}</h2>
+			</div>
+		`,
+		//Para q reciva variable el componente se escribe props, luego lso datos q va a resivir son un array
+		props:[
+			"numero"
+		]
+	});
+	const cont = new Vue({
+	
+	  el: "#elemento",
+	  data:{
+		
+	  },
+	  methods:{
+	  	
+	  }
+	
+	});
+</script>
+</html>

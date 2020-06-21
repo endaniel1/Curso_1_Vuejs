@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vuejs</title>
+</head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<body>
+	<div id="elemento">
+		<div>
+			<h3>{{numero}}</h3>
+			<button type="button" @click="numero++" class="btn btn-primary">+</button>
+		</div>
+		<!-- Para crear un componente se pone su nombre como las etiquetas html-->
+		<!-- Un Componente es independiente de otro se puede llamar tantas ves se quiera o decee-->
+		<componente_mi></componente_mi>
+		<componente_mi></componente_mi>
+	</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="componente.js"></script>
+<script>	
+	const cont = new Vue({
+	
+	  el: "#elemento",
+	  data:{
+		numero:0
+	  },
+	  methods:{
+	  	
+	  }
+	
+	});
+</script>
+</html>
