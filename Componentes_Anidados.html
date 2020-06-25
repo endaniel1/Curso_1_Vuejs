@@ -17,14 +17,16 @@
 		`
 			<div class="p-5 bg-dark text-white">				
 				<h2>Papa {{numeroPadre}}</h2>
+				<h2>Hijo {{nombreHijoVariable}}</h2>
 				<button type="button" class="btn btn-danger" @click="numeroPadre++">+</button>
-				<!-- Para llamar a un componetente hijo Basta con solamente escribir si nombre, si le desea pasar variable se le coloca como atributos-->
-				<hijo :numero=numeroPadre></hijo>
+				<!-- Para llamar a un componetente hijo Basta con solamente escribir si nombre, si le desea pasar variable se le coloca como atributos-->				
+				<hijo :numero=numeroPadre @nombreHijoVariable="nombreHijoVariable=$event"></hijo>
 			</div>
 		`,
 		data(){//DATOS Q MANEJARA EL COMPONENTE PADRE
 			return{
-				numeroPadre:15
+				numeroPadre:15,
+				nombreHijoVariable:""
 			}
 		}
 	});
@@ -35,12 +37,22 @@
 			<div class="p-5 bg-success text-white">
 				Hijo
 				<h2>{{numero}}</h2>
+				<button type="button" @click="numero++">+</button>
+				Nombre <h2>{{nombreHijoVariable}}</h2>
 			</div>
 		`,
 		//Para q reciva variable el componente se escribe props, luego lso datos q va a resivir son un array
 		props:[
 			"numero"
-		]
+		],
+		data(){
+			return{
+				nombreHijoVariable:"Papito"
+			}
+		},
+		mounted(){
+			this.$emit("nombreHijoVariable",this.nombreHijoVariable)
+		}
 	});
 	const cont = new Vue({
 	

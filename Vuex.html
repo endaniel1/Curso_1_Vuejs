@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vuejs</title>
+</head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<body>
+	<div id="elemento" class="container">
+		<padre></padre>
+	</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vuex@3.4.0/dist/vuex.js"></script>
+<script>
+	//PADRE
+	Vue.component("padre",{
+		template://html
+		`
+		<div class="p-5 bg-dark text-white">
+			<!-- <button type="button" @click="$store.commit('suma')">+</button> -->
+
+			<button type="button" @click="suma">+</button>
+			<button type="button" @click="resta(2)">-</button>
+			<h2>Numero {{numero}} </h2>
+			<h2>edad {{edad}} </h2>
+			<hijo></hijo>
+		</div>
+		`,
+		computed:{
+			...Vuex.mapState(["edad","numero"])//otra manera de hacer el llamado a las variables de Vuex
+			/*
+			numero(){
+				return store.state.numero;
+			},
+			edad(){
+				return store.state.edad;
+			}
+			*/
+		},
+		methods: {
+			...Vuex.mapMutations(['suma','resta'])//otra manera de hacer el llamado a las mutaciones
+		}
+	});
+	//HIJO
+	Vue.component("hijo",{
+		template://html
+		`
+		<div class="p-5 bg-success text-white">
+			<!-- <button type="button" @click="$store.commit('suma')">+</button> -->
+			<button type="button" @click="suma">+</button>
+			<button type="button" @click="resta(2)">-</button>
+			<h2>Numero {{numero}} </h2>
+		</div>
+		`,
+		computed:{
+			...Vuex.mapState(["edad","numero"])//otra manera de hacer el llamado a las variables de Vuex
+			/*
+			numero(){
+				return store.state.numero;
+			},
+			edad(){
+				return store.state.edad;
+			}
+			*/
+		},
+		methods: {
+			...Vuex.mapMutations(['suma','resta'])//otra manera de hacer el llamado a las mutaciones
+		}
+	});
+	//Aqui utilizamos Vuex y su clase Store
+	const store=new Vuex.Store({
+		state:{//aqui van los datos estatico o variables constantes
+			numero:10,
+			edad:9
+		},
+		mutations:{//mutaciones o funciones
+			//A cada mutacion se le pasa la variable state
+			suma(state){
+				state.numero++;
+			},
+			resta(state,n){//se desea pasar mas variables asi
+				state.numero=state.numero-n;
+			}
+		}
+	});
+	const vm = new Vue({
+	
+	  el: "#elemento",
+	  store:store//utilizamos y llamamos a Vuex
+	
+	});
+</script>
+</html>
