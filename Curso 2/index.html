@@ -2,11 +2,17 @@
 <html>
 <head>
 	<title>Curso de Vuejs desde cero</title>
+	<style type="text/css">
+		[v-cloak]{
+			display: none;
+		}
+	</style>		
 </head>
 <body>
 	<h1>Curso Vuejs</h1>
 	<div id="app">
 		<h2>Elemento a Cargar con Vuejs</h2>	
+		<p v-cloak>{{title_v_cloack}}</p>
 		<hello></hello>	
 		<vue-directives></vue-directives>
 	</div>
@@ -17,7 +23,10 @@
 	<script src="componets/DirectiveIf.js"></script>	
 	<script src="componets/DirectiveFor.js"></script>	
 	<script src="componets/DirectiveOn.js"></script>
-	<script src="componets/DirectiveModel.js"></script>
+	<script src="componets/DirectiveModel.js"></script>	
+	<script src="componets/SlotComponents/buttonComp.js"></script>
+	<script src="componets/DirectiveSlot.js"></script>
+	<script src="componets/DirectiveOnce.js"></script>
 	<script src="componets/VueDirectives.js"></script>
 	<script>
 		var vm = new Vue({
@@ -25,7 +34,8 @@
 		  el: "#app",
 		  data(){
 		  	return{
-		  		title:"Hola mundo desde Vuejs"
+		  		title:"Hola mundo desde Vuejs",
+		  		title_v_cloack:"Directives Vue JS v-cloak"
 		  	}
 		  }
 		

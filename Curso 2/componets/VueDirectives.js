@@ -15,6 +15,8 @@ Vue.component("vue-directives",{
 		<DirectiveFor/>
 		<DirectiveOn/>
 		<DirectiveModel/>
+		<DirectiveSlot/>		
+		<DirectiveOnce/>
 	</div>
 	`,
 	data(){
@@ -34,6 +36,8 @@ Vue.component("vue-directives",{
 		DirectiveIf,
 		DirectiveFor,
 		DirectiveOn,
-		DirectiveModel
+		DirectiveModel,
+		DirectiveSlot,
+		DirectiveOnce
 	}
 })
