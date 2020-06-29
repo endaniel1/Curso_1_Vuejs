@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Curso de Vuejs desde cero</title>
+</head>
+<body>
+	<h1>Curso Vuejs</h1>
+	<div id="app">
+		<h2>Elemento a Cargar con Vuejs</h2>	
+		<hello></hello>	
+		<vue-directives></vue-directives>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="componets/Hello.js"></script>
+	<script src="componets/DirectiveHtml.js"></script>	
+	<script src="componets/DirectiveShow.js"></script>	
+	<script src="componets/DirectiveIf.js"></script>	
+	<script src="componets/DirectiveFor.js"></script>	
+	<script src="componets/DirectiveOn.js"></script>
+	<script src="componets/DirectiveModel.js"></script>
+	<script src="componets/VueDirectives.js"></script>
+	<script>
+		var vm = new Vue({
+		
+		  el: "#app",
+		  data(){
+		  	return{
+		  		title:"Hola mundo desde Vuejs"
+		  	}
+		  }
+		
+		})
+	</script>
+</body>
+</html>
