@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Curso de Vuejs</title>
+</head>
+<body>
+	<div id="app">
+		<h1>{{titulo}}</h1>
+		<input type="text" v-model="nuevaFruta" @keyup.enter="agregarFruta">
+		<button type="button" @click="agregarFruta">Click</button>
+		<ul>
+			<li v-for="(fruta,index) of frutas" :key="index">
+				<input type="number" v-model.number="fruta.cantidad">
+				{{ fruta.nombre }}
+				<button @click="fruta.cantidad++">+</button>
+				<span v-if="fruta.cantidad === 0"> - Sin Stock</span>
+			</li>
+		</ul>
+		<h4>Total: {{sumarFruta}}</h4>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="js/01.js"></script>
+</body>
+</html>
